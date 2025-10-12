@@ -19,7 +19,8 @@ public class PagamentoMapper {
                         pagamento.getCliente().getId_cliente(),
                         pagamento.getCliente().getName(),
                         pagamento.getCliente().getEndereco(),
-                        pagamento.getCliente().getTelefone()
+                        pagamento.getCliente().getTelefone(),
+                        pagamento.getCliente().getDescricao()
                 )
         );
     }

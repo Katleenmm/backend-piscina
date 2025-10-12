@@ -11,7 +11,8 @@ public class ClienteMapper {
                 cliente.getId_cliente(),
                 cliente.getName(),
                 cliente.getEndereco(),
-                cliente.getTelefone()
+                cliente.getTelefone(),
+                cliente.getDescricao()
         );
     }
 
@@ -21,6 +22,7 @@ public class ClienteMapper {
         cliente.setName(clienteDTO.name());
         cliente.setEndereco(clienteDTO.endereco());
         cliente.setTelefone(clienteDTO.telefone());
+        cliente.setDescricao();
         return cliente;
     }
 }
