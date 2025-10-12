@@ -10,6 +10,6 @@ public record PagamentoDTO (
         double valor,
         LocalDate data_vencimento,
         boolean pago,
-        Cliente cliente
+        ClienteDTO cliente
 ){
 }

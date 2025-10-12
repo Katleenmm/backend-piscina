@@ -10,7 +10,7 @@ public class ClienteMapper {
         return new ClienteDTO(
                 cliente.getId_cliente(),
                 cliente.getName(),
-                cliente.getEndereço(),
+                cliente.getEndereco(),
                 cliente.getTelefone()
         );
     }
@@ -19,7 +19,7 @@ public class ClienteMapper {
         Cliente cliente = new Cliente();
         cliente.setId_cliente(clienteDTO.id_cliente());
         cliente.setName(clienteDTO.name());
-        cliente.setEndereço(clienteDTO.endereco());
+        cliente.setEndereco(clienteDTO.endereco());
         cliente.setTelefone(clienteDTO.telefone());
         return cliente;
     }
