@@ -12,6 +12,15 @@ public class Cliente {
     private String name;
     private String endereco;
     private String telefone;
+    private String descricao;
+
+    public String getDescricao() {
+        return descricao;
+    }
+
+    public void setDescricao() {
+        this.descricao = descricao;
+    }
 
     public UUID getId_cliente() {
         return id_cliente;

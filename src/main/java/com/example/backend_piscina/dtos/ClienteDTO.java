@@ -6,7 +6,8 @@ public record ClienteDTO(
         UUID id_cliente,
         String name,
         String endereco,
-        String telefone
+        String telefone,
+        String descricao
 ) {
 }
 
