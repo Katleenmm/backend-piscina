@@ -10,7 +10,7 @@ public class Cliente {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id_cliente;
     private String name;
-    private String endereço;
+    private String endereco;
     private String telefone;
 
     public UUID getId_cliente() {
@@ -29,12 +29,12 @@ public class Cliente {
         this.name = name;
     }
 
-    public String getEndereço() {
-        return endereço;
+    public String getEndereco() {
+        return endereco;
     }
 
-    public void setEndereço(String endereço) {
-        this.endereço = endereço;
+    public void setEndereco(String endereco) {
+        this.endereco = endereco;
     }
 
     public String getTelefone() {
