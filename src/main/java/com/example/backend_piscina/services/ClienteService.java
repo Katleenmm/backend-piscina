@@ -46,7 +46,7 @@ public class ClienteService {
         cliente.setName(clienteDTO.name());
         cliente.setEndereco(clienteDTO.endereco());
         cliente.setTelefone(clienteDTO.telefone());
-        cliente.setDescricao();
+        cliente.setDescricao(clienteDTO.descricao());
         clienteRepository.save(cliente);
         return clienteMapper.toDTO(cliente);
     }

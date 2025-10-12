@@ -18,7 +18,7 @@ public class Cliente {
         return descricao;
     }
 
-    public void setDescricao() {
+    public void setDescricao(String descricao) {
         this.descricao = descricao;
     }
 

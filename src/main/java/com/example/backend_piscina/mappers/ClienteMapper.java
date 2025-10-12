@@ -22,7 +22,7 @@ public class ClienteMapper {
         cliente.setName(clienteDTO.name());
         cliente.setEndereco(clienteDTO.endereco());
         cliente.setTelefone(clienteDTO.telefone());
-        cliente.setDescricao();
+        cliente.setDescricao(clienteDTO.descricao());
         return cliente;
     }
 }
