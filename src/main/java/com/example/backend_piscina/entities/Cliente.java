@@ -9,10 +9,28 @@ public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id_cliente;
+    private String login;
+    private String senha;
     private String name;
     private String endereco;
     private String telefone;
     private String descricao;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public String getDescricao() {
         return descricao;

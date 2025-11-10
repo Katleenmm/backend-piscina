@@ -1,6 +1,7 @@
 package com.example.backend_piscina.services;
 
 import com.example.backend_piscina.dtos.ClienteDTO;
+import com.example.backend_piscina.dtos.ClienteOutputDTO;
 import com.example.backend_piscina.entities.Cliente;
 import com.example.backend_piscina.mappers.ClienteMapper;
 import com.example.backend_piscina.repositories.ClienteRepository;
@@ -21,35 +22,41 @@ public class ClienteService {
         this.clienteRepository = clienteRepository;
         this.pagamentoRepository = pagamentoRepository;
     }
-    public Page<ClienteDTO> getAllCliente(Pageable pageable) {
+    public Page<ClienteOutputDTO> getAllCliente(Pageable pageable) {
         Page<Cliente> clienteList = clienteRepository.findAll(pageable);
-        return clienteList.map(clienteMapper::toDTO);
+        return clienteList.map(clienteMapper::toOutputDTO);
     }
 
-    public ClienteDTO getClienteById(UUID id) {
+    public ClienteOutputDTO getClienteById(UUID id) {
         Cliente cliente = clienteRepository.findById(id).orElseThrow(
                 () -> new RuntimeException("O cliente não existe")
         );
-        return clienteMapper.toDTO(cliente);
+        return clienteMapper.toOutputDTO(cliente);
     }
 
-    public ClienteDTO createCliente(ClienteDTO clienteDTO) {
+    public ClienteOutputDTO createCliente(ClienteDTO clienteDTO) {
         Cliente cliente = clienteMapper.toEntity(clienteDTO);
         clienteRepository.save(cliente);
-        return clienteMapper.toDTO(cliente);
+        return clienteMapper.toOutputDTO(cliente);
     }
 
-    public ClienteDTO updateCliente(UUID id, ClienteDTO clienteDTO) {
-        Cliente cliente = clienteRepository.findById(id).orElseThrow(
-                () -> new RuntimeException("O cliente não existe")
-        );
-        cliente.setName(clienteDTO.name());
-        cliente.setEndereco(clienteDTO.endereco());
-        cliente.setTelefone(clienteDTO.telefone());
-        cliente.setDescricao(clienteDTO.descricao());
+    public ClienteOutputDTO updateCliente(UUID id, ClienteDTO dto) {
+        Cliente cliente = clienteRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("O cliente não existe"));
+
+        if (dto.senha() != null && !dto.senha().isBlank()) {
+            cliente.setSenha(dto.senha());
+        }
+        if (dto.name() != null) cliente.setName(dto.name());
+        if (dto.endereco() != null) cliente.setEndereco(dto.endereco());
+        if (dto.telefone() != null) cliente.setTelefone(dto.telefone());
+        if (dto.descricao() != null) cliente.setDescricao(dto.descricao());
+
         clienteRepository.save(cliente);
-        return clienteMapper.toDTO(cliente);
+
+        return clienteMapper.toOutputDTO(cliente);
     }
+
 
     public void deleteCliente(UUID id_cliente) {
         // Verifica se cliente existe
