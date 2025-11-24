@@ -2,14 +2,11 @@ package com.example.backend_piscina.dtos;
 
 import java.util.UUID;
 
-public record ClienteDTO(
-        UUID id_cliente,
+public record ClienteOutputDTO(
+        UUID id,
         String login,
         String name,
-        String senha,
         String endereco,
         String telefone,
-        String descricao
-) {
+        String descricao) {
 }
-

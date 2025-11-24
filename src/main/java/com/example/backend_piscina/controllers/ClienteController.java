@@ -1,6 +1,7 @@
 package com.example.backend_piscina.controllers;
 
 import com.example.backend_piscina.dtos.ClienteDTO;
+import com.example.backend_piscina.dtos.ClienteOutputDTO;
 import com.example.backend_piscina.services.ClienteService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -19,22 +20,22 @@ public class ClienteController {
     }
 
     @GetMapping
-    public Page<ClienteDTO> getAllCliente(Pageable pageable) {
+    public Page<ClienteOutputDTO> getAllCliente(Pageable pageable) {
         return clienteService.getAllCliente(pageable);
     }
 
     @GetMapping("/{id}")
-    public ClienteDTO getClienteById(@PathVariable UUID id) {
+    public ClienteOutputDTO getClienteById(@PathVariable UUID id) {
         return clienteService.getClienteById(id);
     }
 
     @PostMapping
-    public ClienteDTO createCliente(@RequestBody ClienteDTO clienteDTO) {
+    public ClienteOutputDTO createCliente(@RequestBody ClienteDTO clienteDTO) {
         return clienteService.createCliente(clienteDTO);
     }
 
     @PutMapping("/{id}")
-    public ClienteDTO updateCliente(@PathVariable UUID id, @RequestBody ClienteDTO clienteDTO){
+    public ClienteOutputDTO updateCliente(@PathVariable UUID id, @RequestBody ClienteDTO clienteDTO){
         return clienteService.updateCliente(id, clienteDTO);
     }
 

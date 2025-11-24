@@ -8,11 +8,29 @@ import java.util.UUID;
 public class Cliente {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private UUID id_cliente;
+    private UUID idCliente;
+    private String login;
+    private String senha;
     private String name;
     private String endereco;
     private String telefone;
     private String descricao;
+
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
+    }
 
     public String getDescricao() {
         return descricao;
@@ -22,12 +40,12 @@ public class Cliente {
         this.descricao = descricao;
     }
 
-    public UUID getId_cliente() {
-        return id_cliente;
+    public UUID getIdCliente() {
+        return idCliente;
     }
 
-    public void setId_cliente(UUID id_cliente) {
-        this.id_cliente = id_cliente;
+    public void setIdCliente(UUID idCliente) {
+        this.idCliente = idCliente;
     }
 
     public String getName() {
