@@ -16,8 +16,10 @@ public class PagamentoMapper {
                 pagamento.getData_vencimento(),
                 pagamento.isPago(),
                 new ClienteDTO(
-                        pagamento.getCliente().getId_cliente(),
+                        pagamento.getCliente().getIdCliente(),
+                        pagamento.getCliente().getLogin(),
                         pagamento.getCliente().getName(),
+                        pagamento.getCliente().getSenha(),
                         pagamento.getCliente().getEndereco(),
                         pagamento.getCliente().getTelefone(),
                         pagamento.getCliente().getDescricao()
@@ -27,7 +29,7 @@ public class PagamentoMapper {
 
     public Pagamento toEntity(PagamentoDTO dto) {
         Cliente cliente = new Cliente();
-        cliente.setId_cliente(dto.cliente().id_cliente());
+        cliente.setIdCliente(dto.cliente().id_cliente());
 
         Pagamento pagamento = new Pagamento();
         pagamento.setId_pagamento(dto.id_pagamento());

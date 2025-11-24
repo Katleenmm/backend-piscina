@@ -9,7 +9,7 @@ public class ClienteMapper {
 
     public ClienteOutputDTO toOutputDTO(Cliente cliente) {
         return new ClienteOutputDTO(
-                cliente.getId_cliente(),
+                cliente.getIdCliente(),
                 cliente.getLogin(),
                 cliente.getName(),
                 cliente.getEndereco(),
