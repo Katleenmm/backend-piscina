@@ -17,9 +17,8 @@ public class ConversaMapper {
                         conversa.getCliente().getIdCliente(),
                         conversa.getCliente().getLogin(),
                         conversa.getCliente().getName(),
-                        conversa.getCliente().getEndereco(),
-                        conversa.getCliente().getTelefone(),
-                        conversa.getCliente().getDescricao()
+                        conversa.getCliente().getTelefone()
+
                 )
         );
     }
