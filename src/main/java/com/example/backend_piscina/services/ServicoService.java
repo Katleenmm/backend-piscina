@@ -9,6 +9,8 @@ import com.example.backend_piscina.repositories.ServicoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class ServicoService {
 
@@ -33,4 +35,12 @@ public class ServicoService {
         // converte Entidade → DTO
         return ServicoMapper.toDTO(servico);
     }
+
+    public List<ServicoDTO> listarServicos() {
+        return servicoRepository.findAll()
+                .stream()
+                .map(ServicoMapper::toDTO)
+                .toList();
+    }
+
 }
