@@ -15,6 +15,16 @@ public class Cliente {
     private String senha;
     private String name;
     private String telefone;
+    private String role = "USER";
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getLogin() {
         return login;

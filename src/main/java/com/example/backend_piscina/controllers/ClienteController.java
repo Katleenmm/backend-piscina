@@ -55,6 +55,7 @@ public class ClienteController {
             ClienteLoginDTO dto = new ClienteLoginDTO(
                     c.getIdCliente(),
                     c.getName(),
+                    c.getRole(),
                     c.getLogin()
             );
 

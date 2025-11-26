@@ -7,13 +7,13 @@ public class ClienteLoginDTO {
     private UUID idCliente;
     private String name;
     private String login;
+    private String role; // <--- campo novo
 
-    public ClienteLoginDTO() {}
-
-    public ClienteLoginDTO(UUID idCliente, String name, String login) {
+    public ClienteLoginDTO(UUID idCliente, String name, String login, String role) {
         this.idCliente = idCliente;
         this.name = name;
         this.login = login;
+        this.role = role;
     }
 
     public UUID getIdCliente() {
@@ -28,8 +28,8 @@ public class ClienteLoginDTO {
         return name;
     }
 
-    public void setName(String nome) {
-        this.name = nome;
+    public void setName(String name) {
+        this.name = name;
     }
 
     public String getLogin() {
@@ -38,5 +38,13 @@ public class ClienteLoginDTO {
 
     public void setLogin(String login) {
         this.login = login;
+    }
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
     }
 }
