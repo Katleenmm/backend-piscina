@@ -5,6 +5,8 @@ import com.example.backend_piscina.services.ServicoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 @RequestMapping("/servicos")
 public class ServicoController {
@@ -15,5 +17,10 @@ public class ServicoController {
     @PostMapping
     public ServicoDTO criar(@RequestBody ServicoDTO dto) {
         return servicoService.criarServico(dto);
+    }
+
+    @GetMapping
+    public List<ServicoDTO> listar() {
+        return servicoService.listarServicos();
     }
 }
