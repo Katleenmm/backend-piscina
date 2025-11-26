@@ -44,6 +44,9 @@ public class ClienteService {
         cliente.setSenha(passwordEncoder.encode(dto.senha()));
         cliente.setName(dto.name());
         cliente.setTelefone(dto.telefone());
+
+        cliente.setRole(dto.role() != null ? dto.role() : "USER");
+
         clienteRepository.save(cliente);
         return clienteMapper.toOutputDTO(cliente);
     }
