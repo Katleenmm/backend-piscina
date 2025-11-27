@@ -7,9 +7,8 @@ public record ClienteDTO(
         String login,
         String name,
         String senha,
-        String endereco,
         String telefone,
-        String descricao
+        String role
 ) {
 }
 

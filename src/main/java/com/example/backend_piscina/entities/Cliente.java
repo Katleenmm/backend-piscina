@@ -1,6 +1,8 @@
 package com.example.backend_piscina.entities;
 
 import jakarta.persistence.*;
+
+import java.util.List;
 import java.util.UUID;
 
 @Entity
@@ -12,9 +14,17 @@ public class Cliente {
     private String login;
     private String senha;
     private String name;
-    private String endereco;
     private String telefone;
-    private String descricao;
+    private String role = "USER";
+
+
+    public String getRole() {
+        return role;
+    }
+
+    public void setRole(String role) {
+        this.role = role;
+    }
 
     public String getLogin() {
         return login;
@@ -30,14 +40,6 @@ public class Cliente {
 
     public void setSenha(String senha) {
         this.senha = senha;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
     }
 
     public UUID getIdCliente() {
@@ -56,13 +58,6 @@ public class Cliente {
         this.name = name;
     }
 
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
 
     public String getTelefone() {
         return telefone;
@@ -71,4 +66,10 @@ public class Cliente {
     public void setTelefone(String telefone) {
         this.telefone = telefone;
     }
+
+    @OneToMany(mappedBy = "cliente", cascade = CascadeType.ALL)
+    private List<Servico> servicos;
+
+
+
 }
