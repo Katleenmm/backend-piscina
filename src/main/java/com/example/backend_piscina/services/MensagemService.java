@@ -28,20 +28,24 @@ public class MensagemService {
         this.mensagemMapper = mensagemMapper;
     }
 
-    public MensagemDTO createMensagem(MensagemDTO dto) {
 
-        Conversa conversa = conversaRepository.findById(dto.idConversa())
+    public MensagemDTO createMensagem(UUID idConversa, String remetente,
+                                     String texto, byte[] imagem) {
+
+        Conversa conversa = conversaRepository.findById(idConversa)
                 .orElseThrow(() -> new RuntimeException("Conversa não encontrada"));
 
-        Mensagem mensagem = mensagemMapper.toEntity(dto);
-        mensagem.setTimestamp(LocalDateTime.now());
+        Mensagem mensagem = new Mensagem();
         mensagem.setConversa(conversa);
+        mensagem.setRemetente(remetente);
+        mensagem.setConteudo_texto(texto);
+        mensagem.setTimestamp(LocalDateTime.now());
+        mensagem.setImagem(imagem);
 
         Mensagem salva = mensagemRepository.save(mensagem);
 
         return mensagemMapper.toDTO(salva);
     }
-
 
     public List<MensagemDTO> getMensagensByConversa(UUID idConversa) {
 
