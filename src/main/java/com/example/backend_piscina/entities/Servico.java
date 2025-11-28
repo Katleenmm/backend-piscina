@@ -11,6 +11,7 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idServico;
 
+    private boolean concluido;
     private String descricao;
     private String endereco;
 
@@ -18,12 +19,31 @@ public class Servico {
     @JoinColumn(name = "id_cliente") // chave estrangeira
     private Cliente cliente;
 
+    // 🔹 Construtor vazio (obrigatório pelo JPA)
+    public Servico() {}
+
+    // 🔹 Construtor completo (opcional, mas útil)
+    public Servico(boolean concluido, String descricao, String endereco, Cliente cliente) {
+        this.concluido = concluido;
+        this.descricao = descricao;
+        this.endereco = endereco;
+        this.cliente = cliente;
+    }
+
     public UUID getIdServico() {
         return idServico;
     }
 
     public void setIdServico(UUID idServico) {
         this.idServico = idServico;
+    }
+
+    public boolean isConcluido() {
+        return concluido;
+    }
+
+    public void setConcluido(boolean concluido) {
+        this.concluido = concluido;
     }
 
     public String getDescricao() {

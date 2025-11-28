@@ -4,40 +4,26 @@ import java.util.UUID;
 
 public class ServicoDTO {
 
-    private UUID idServico;   // pode vir nulo no POST
+    private UUID idServico;
+    private boolean concluido;
     private String descricao;
     private String endereco;
-    private UUID idCliente;
+    private ClienteOutputDTO cliente;  // ⬅ TROCAR AQUI
 
-    public UUID getIdServico() {
-        return idServico;
-    }
+    public ServicoDTO() {}
 
-    public void setIdServico(UUID idServico) {
+    public ServicoDTO(UUID idServico, boolean concluido, String descricao,
+                      String endereco, ClienteOutputDTO cliente) { // ⬅ TROCAR AQUI
         this.idServico = idServico;
-    }
-
-    public String getDescricao() {
-        return descricao;
-    }
-
-    public void setDescricao(String descricao) {
+        this.concluido = concluido;
         this.descricao = descricao;
-    }
-
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
         this.endereco = endereco;
+        this.cliente = cliente;
     }
 
-    public UUID getIdCliente() {
-        return idCliente;
-    }
-
-    public void setIdCliente(UUID idCliente) {
-        this.idCliente = idCliente;
-    }
+    public UUID getIdServico() { return idServico; }
+    public boolean isConcluido() { return concluido; }
+    public String getDescricao() { return descricao; }
+    public String getEndereco() { return endereco; }
+    public ClienteOutputDTO getCliente() { return cliente; }  // ⬅ TROCAR AQUI
 }
