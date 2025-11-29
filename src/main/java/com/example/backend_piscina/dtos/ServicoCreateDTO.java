@@ -7,6 +7,7 @@ public class ServicoCreateDTO {
     private String descricao;
     private String endereco;
     private UUID idCliente;
+    private UUID idConversa;
 
     public String getDescricao() {
         return descricao;
@@ -18,5 +19,9 @@ public class ServicoCreateDTO {
 
     public UUID getIdCliente() {
         return idCliente;
+    }
+
+    public UUID getIdConversa() {
+        return idConversa;
     }
 }

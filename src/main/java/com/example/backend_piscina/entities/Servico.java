@@ -15,14 +15,21 @@ public class Servico {
     private String descricao;
     private String endereco;
 
+    // ✅ deixa só UMA vez (texto longo do resumo)
+    @Lob
+    @Column(columnDefinition = "TEXT")
+    private String resumoChat;
+
     @ManyToOne
-    @JoinColumn(name = "id_cliente") // chave estrangeira
+    @JoinColumn(name = "id_cliente")
     private Cliente cliente;
 
-    // 🔹 Construtor vazio (obrigatório pelo JPA)
+    @ManyToOne
+    @JoinColumn(name = "id_conversa")
+    private Conversa conversa;
+
     public Servico() {}
 
-    // 🔹 Construtor completo (opcional, mas útil)
     public Servico(boolean concluido, String descricao, String endereco, Cliente cliente) {
         this.concluido = concluido;
         this.descricao = descricao;
@@ -30,43 +37,24 @@ public class Servico {
         this.cliente = cliente;
     }
 
-    public UUID getIdServico() {
-        return idServico;
-    }
+    public UUID getIdServico() { return idServico; }
+    public void setIdServico(UUID idServico) { this.idServico = idServico; }
 
-    public void setIdServico(UUID idServico) {
-        this.idServico = idServico;
-    }
+    public boolean isConcluido() { return concluido; }
+    public void setConcluido(boolean concluido) { this.concluido = concluido; }
 
-    public boolean isConcluido() {
-        return concluido;
-    }
+    public String getDescricao() { return descricao; }
+    public void setDescricao(String descricao) { this.descricao = descricao; }
 
-    public void setConcluido(boolean concluido) {
-        this.concluido = concluido;
-    }
+    public String getEndereco() { return endereco; }
+    public void setEndereco(String endereco) { this.endereco = endereco; }
 
-    public String getDescricao() {
-        return descricao;
-    }
+    public Cliente getCliente() { return cliente; }
+    public void setCliente(Cliente cliente) { this.cliente = cliente; }
 
-    public void setDescricao(String descricao) {
-        this.descricao = descricao;
-    }
+    public Conversa getConversa() { return conversa; }
+    public void setConversa(Conversa conversa) { this.conversa = conversa; }
 
-    public String getEndereco() {
-        return endereco;
-    }
-
-    public void setEndereco(String endereco) {
-        this.endereco = endereco;
-    }
-
-    public Cliente getCliente() {
-        return cliente;
-    }
-
-    public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
-    }
+    public String getResumoChat() { return resumoChat; }
+    public void setResumoChat(String resumoChat) { this.resumoChat = resumoChat; }
 }

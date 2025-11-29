@@ -25,6 +25,8 @@ public class ServicoMapper {
                 servico.isConcluido(),
                 servico.getDescricao(),
                 servico.getEndereco(),
+                servico.getConversa() != null ? servico.getConversa().getIdConversa() : null,
+                servico.getResumoChat(),
                 clienteDTO
         );
     }

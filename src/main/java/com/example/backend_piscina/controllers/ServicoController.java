@@ -28,10 +28,10 @@ public class ServicoController {
         return ResponseEntity.ok(servicoService.listarTodos());
     }
 
-    // Buscar por ID
+    // Buscar por ID retornando DTO (com resumoChat)
     @GetMapping("/{id}")
-    public Servico getById(@PathVariable UUID id) {
-        return servicoService.getById(id);
+    public ResponseEntity<ServicoDTO> getById(@PathVariable UUID id) {
+        return ResponseEntity.ok(servicoService.getDTOById(id));
     }
 
     // Criar
@@ -41,13 +41,14 @@ public class ServicoController {
         return ResponseEntity.status(HttpStatus.CREATED).body(servico);
     }
 
-    // Atualizar concluído
+    // Atualizar concluído retornando DTO
     @PatchMapping("/{id}/concluido")
-    public Servico updateConcluido(
+    public ResponseEntity<ServicoDTO> updateConcluido(
             @PathVariable UUID id,
             @RequestBody Map<String, Boolean> body
     ) {
         boolean concluido = body.get("concluido");
-        return servicoService.updateConcluido(id, concluido);
+        return ResponseEntity.ok(servicoService.updateConcluidoDTO(id, concluido));
+
     }
 }

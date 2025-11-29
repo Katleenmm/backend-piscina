@@ -12,7 +12,7 @@ public class Conversa {
     @GeneratedValue(strategy = GenerationType.UUID)
     @Column(name = "id_conversa")
     private UUID idConversa;
-    private LocalDateTime data_conversa;
+    private LocalDateTime dataConversa;
     @ManyToOne
     @JoinColumn(name = "idCliente", nullable = false)
     private Cliente cliente;
@@ -26,12 +26,12 @@ public class Conversa {
         this.idConversa = idConversa;
     }
 
-    public LocalDateTime getData_conversa() {
-        return data_conversa;
+    public LocalDateTime getDataConversa() {
+        return dataConversa;
     }
 
-    public void setData_conversa(LocalDateTime data_conversa) {
-        this.data_conversa = data_conversa;
+    public void setDataConversa(LocalDateTime dataConversa) {
+        this.dataConversa = dataConversa;
     }
 
     public Cliente getCliente() {
