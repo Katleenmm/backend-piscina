@@ -5,7 +5,6 @@ import java.util.UUID;
 
 public record MensagemDTO(
         UUID id_mensagem,
-        UUID idConversa,
         String remetente,
         String conteudo_texto,
         String imagem,

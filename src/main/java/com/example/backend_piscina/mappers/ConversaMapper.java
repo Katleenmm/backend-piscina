@@ -1,5 +1,4 @@
 package com.example.backend_piscina.mappers;
-import com.example.backend_piscina.dtos.ClienteDTO;
 import com.example.backend_piscina.dtos.ClienteOutputDTO;
 import com.example.backend_piscina.dtos.ConversaDTO;
 import com.example.backend_piscina.entities.Cliente;
@@ -11,7 +10,7 @@ public class ConversaMapper {
     public ConversaDTO toDTO(Conversa conversa) {
         return new ConversaDTO(
                 conversa.getIdConversa(),
-                conversa.getData_conversa(),
+                conversa.getDataConversa(),
 
                 new ClienteOutputDTO(
                         conversa.getCliente().getIdCliente(),
@@ -29,7 +28,7 @@ public class ConversaMapper {
 
         Conversa conversa = new Conversa();
         conversa.setIdConversa(dto.idConversa());
-        conversa.setData_conversa(dto.data_conversa());
+        conversa.setDataConversa(dto.data_conversa());
         conversa.setCliente(cliente);
         return conversa;
     }
