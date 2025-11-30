@@ -23,6 +23,7 @@ public class ServicoMapper {
         return new ServicoDTO(
                 servico.getIdServico(),
                 servico.isConcluido(),
+                servico.getStatus(),
                 servico.getDescricao(),
                 servico.getEndereco(),
                 servico.getConversa() != null ? servico.getConversa().getIdConversa() : null,
@@ -36,7 +37,7 @@ public class ServicoMapper {
         servico.setDescricao(dto.getDescricao());
         servico.setEndereco(dto.getEndereco());
         servico.setCliente(cliente);
-        servico.setConcluido(false);
+        servico.setStatus(com.example.backend_piscina.entities.enums.StatusServico.PENDENTE); // ✅ default
         return servico;
     }
 }

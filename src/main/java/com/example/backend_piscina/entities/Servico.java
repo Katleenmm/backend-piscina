@@ -1,5 +1,6 @@
 package com.example.backend_piscina.entities;
 
+import com.example.backend_piscina.entities.enums.StatusServico;
 import jakarta.persistence.*;
 import java.util.UUID;
 
@@ -11,14 +12,19 @@ public class Servico {
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID idServico;
 
-    private boolean concluido;
+    @Column(nullable = false)
+    private boolean concluido = false;
+
     private String descricao;
     private String endereco;
 
-    // ✅ deixa só UMA vez (texto longo do resumo)
     @Lob
     @Column(columnDefinition = "TEXT")
     private String resumoChat;
+
+    @Enumerated(EnumType.STRING)
+    @Column(nullable = false)
+    private StatusServico status = StatusServico.PENDENTE;
 
     @ManyToOne
     @JoinColumn(name = "id_cliente")
@@ -35,13 +41,28 @@ public class Servico {
         this.descricao = descricao;
         this.endereco = endereco;
         this.cliente = cliente;
+        this.status = concluido ? StatusServico.CONCLUIDO : StatusServico.PENDENTE;
+    }
+
+    public void setStatus(StatusServico status) {
+        this.status = status;
+        this.concluido = (status == StatusServico.CONCLUIDO);
     }
 
     public UUID getIdServico() { return idServico; }
     public void setIdServico(UUID idServico) { this.idServico = idServico; }
 
     public boolean isConcluido() { return concluido; }
-    public void setConcluido(boolean concluido) { this.concluido = concluido; }
+
+    public void setConcluido(boolean concluido) {
+        this.concluido = concluido;
+        if (concluido) {
+        this.status = StatusServico.CONCLUIDO;
+        }
+    }
+
+
+    public StatusServico getStatus() { return status; }
 
     public String getDescricao() { return descricao; }
     public void setDescricao(String descricao) { this.descricao = descricao; }
