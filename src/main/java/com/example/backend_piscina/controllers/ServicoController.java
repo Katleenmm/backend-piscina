@@ -2,6 +2,7 @@ package com.example.backend_piscina.controllers;
 
 import com.example.backend_piscina.dtos.ServicoCreateDTO;
 import com.example.backend_piscina.dtos.ServicoDTO;
+import com.example.backend_piscina.dtos.UpdateStatusRequest;
 import com.example.backend_piscina.entities.Servico;
 import com.example.backend_piscina.services.ServicoService;
 import org.springframework.http.HttpStatus;
@@ -34,6 +35,13 @@ public class ServicoController {
         return ResponseEntity.ok(servicoService.getDTOById(id));
     }
 
+    // LISTAR serviços por cliente (para "Minhas Solicitações")
+    @GetMapping("/cliente/{idCliente}")
+    public ResponseEntity<List<ServicoDTO>> listarPorCliente(@PathVariable UUID idCliente) {
+        return ResponseEntity.ok(servicoService.listarPorCliente(idCliente));
+    }
+
+
     // Criar
     @PostMapping
     public ResponseEntity<ServicoDTO> criar(@RequestBody ServicoCreateDTO dto) {
@@ -50,5 +58,13 @@ public class ServicoController {
         boolean concluido = body.get("concluido");
         return ResponseEntity.ok(servicoService.updateConcluidoDTO(id, concluido));
 
+    }
+
+    @PatchMapping("/{id}/status")
+    public ResponseEntity<ServicoDTO> atualizarStatus(
+            @PathVariable UUID id,
+            @RequestBody UpdateStatusRequest req
+    ) {
+        return ResponseEntity.ok(servicoService.atualizarStatusDTO(id, req.getStatus()));
     }
 }
